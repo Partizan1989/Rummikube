@@ -10,6 +10,8 @@ namespace RummiServer
     {
         static void Main(string[] args)
         {
+            var tr = Classes.Transtator.Instance;
+            Console.ReadKey();
         }
     }
 }

@@ -27,7 +27,7 @@ namespace RummiServer.DAO.MySQL
         {
             try
             {
-                var dt = wraper.GetDataTable($"SELECT * FROM players p WHERE p.Login ='{login}'");
+                var dt = Wraper.GetDataTable($@"SELECT * FROM players p WHERE p.Login ='{login}'");
                 if (dt.Rows.Count > 0)
                 {
                     var resp = new PlayerInfoDb(dt.Rows[0]);
@@ -46,13 +46,57 @@ namespace RummiServer.DAO.MySQL
         {
             try
             {
-                var dt = wraper.Procedure("Get_Error_Transate");
+                var dt = Wraper.Procedure("Get_Error_Transate");
                 var response = new List<ErrorTextDb>();
                 if (dt.Rows.Count > 0)
                 {
                     foreach (DataRow row in dt.Rows)
                     {
                         response.Add(new ErrorTextDb(row));
+                    }
+                }
+                return response.ToArray();
+            }
+            catch (Exception ee)
+            {
+                log.Error(ee);
+                return null;
+            }
+        }
+
+        public static LanguageDb[] GetLanguagesDb()
+        {
+            try
+            {
+                var dt = Wraper.GetDataTable(@"SELECT * FROM languages");
+                var response = new List<LanguageDb>();
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        response.Add(new LanguageDb(row));
+                    }
+                }
+                return response.ToArray();
+            }
+            catch (Exception ee)
+            {
+                log.Error(ee);
+                return null;
+            }
+        }
+
+        public static TranslateDb[] GetTranslateDb()
+        {
+            try
+            {
+                var dt = Wraper.GetDataTable(@"SELECT * FROM translate_text");
+                var response = new List<TranslateDb>();
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        response.Add(new TranslateDb(row));
                     }
                 }
                 return response.ToArray();

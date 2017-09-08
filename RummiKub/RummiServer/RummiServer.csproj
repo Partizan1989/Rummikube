@@ -57,9 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Transtator.cs" />
     <Compile Include="DAO\MySQL\Db.cs" />
     <Compile Include="DAO\MySQL\Models\ErrorTextDb.cs" />
+    <Compile Include="DAO\MySQL\Models\LanguageDb.cs" />
     <Compile Include="DAO\MySQL\Models\PlayerInfoDb.cs" />
+    <Compile Include="DAO\MySQL\Models\TranslateDb.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
