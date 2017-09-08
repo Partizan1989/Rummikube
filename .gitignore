@@ -1,0 +1,10 @@
+**/DeployPackage/
+**/bin/
+**/obj/
+**/.vs/
+*.suo
+*.user
+*.svclog
+.Debug.
+Web.Debug.config
+Web.Release.config
