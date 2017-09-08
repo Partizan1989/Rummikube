@@ -42,6 +42,25 @@ namespace RummiServer.DAO.MySQL
             }
         }
 
+        public static PlayerInfoDb CheckCredentials(string login, string passMd5)
+        {
+            try
+            {
+                var dt = Wraper.Procedure("check_credentials", login, passMd5);
+                if (dt.Rows.Count > 0)
+                {
+                    var resp = new PlayerInfoDb(dt.Rows[0]);
+                    return resp;
+                }
+                return null;
+            }
+            catch (Exception ee)
+            {
+                log.Error(ee);
+                return null;
+            }
+        }
+
         public static ErrorTextDb[] GetErrorTranslate()
         {
             try
